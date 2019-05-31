@@ -44,18 +44,17 @@ class caesar:
         return encMsg
 
     def decrypt(self):
-        msg = self.encrypt()
         decMsg = ''
-        for i in range(0, len(msg)):
-            nKey = int(ord(msg[i])) - self.key + 26
-            if msg[i] in self.symbols:
+        for i in range(0, len(self.msg)):
+            nKey = int(ord(self.msg[i])) - self.key + 26
+            if self.msg[i] in self.symbols:
                 continue
-            elif ord(msg[i]) - self.key < 65 and msg[i] in self.engUpper:
+            elif ord(self.msg[i]) - self.key < 65 and self.msg[i] in self.engUpper:
                 ch = chr(nKey)
-            elif ord(msg[i]) - self.key < 97 and msg[i] in self.engLower:
+            elif ord(self.msg[i]) - self.key < 97 and self.msg[i] in self.engLower:
                 ch = chr(nKey)
             else:
-                ch = chr(ord(msg[i]) - self.key)
+                ch = chr(ord(self.msg[i]) - self.key)
             decMsg += ch
         return decMsg
 
